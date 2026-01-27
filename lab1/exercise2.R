@@ -1,0 +1,191 @@
+library(readr)
+library(EnvStats)
+library(nortest)
+
+# set working directory (relative path)
+setwd("C:/Users/shann/Documents/School/spring26/itws6600/github/ITWS-6600-Data-Analytics/lab1")
+
+# read data
+epi.data <- read_csv("epi_results_2024_pop_gdp.csv")
+
+# view dataframe
+View(epi.data)
+
+# print vlues in variable
+epi.data$EPI.new
+
+# print summary of variable
+summary(epi.data$EPI.new)
+
+
+### Explore Variable ###
+
+## take a copy of a variable from a dataframe into a separate variable
+SHI <- epi.data$SHI.new
+
+# find NAs in variable: function outputs vector of logical values, true if NA, false otherwise
+NAs <- is.na(SHI)
+
+# print
+NAs
+
+# function "which" returns row numbers of rows with NAs
+rownums <- which(NAs)
+
+# take subset of NOT NAs from variable
+SHI.complete <- SHI[!NAs]
+
+SHI.complete
+
+## create copy of new variable
+
+BER <- epi.data$BER.new
+
+# print values in variable
+BER
+
+# find NAs inv variavle - outputs vector of logical values, true if NA, false otherwise
+NAs <- is.na(BER)
+
+rownums <- which(NAs)
+
+# print NAs
+BER[rownums]
+
+# take subset of NOT NAs from variable
+BER.complete <- BER[!NAs]
+
+BER.complete
+
+# boxplot of variable(s)
+boxplot(SHI.complete, BER.complete, names = c("SHI","BER"))
+
+
+### Histograms ###
+
+# histogram (frequency distribution)
+hist(SHI.complete)
+
+# define sequence of values over which to plot histogram
+x <- seq(0., 100., 5)
+
+# histogram (frequency distribution) over specified range
+hist(SHI.complete, x, prob=TRUE)
+
+# print estimated density curve for variable
+lines(density(SHI.complete,bw="SJ")) # or try bw=“SJ”
+
+# print rug under histogram
+rug(SHI.complete)
+
+
+## plot  histogram again
+
+# histogram (frequency distribution) over range
+hist(SHI.complete, x, prob=TRUE) 
+
+# range of values
+x1<-seq(0,100,1)
+
+# generate probability density values for a normal distribution with given mean and sd
+d1 <- dnorm(x1,mean=46, sd=11,log=FALSE)
+
+# print density values
+lines(x1,d1)
+
+# histogram (frequency distribution)
+hist(BER.complete)
+
+# define sequence of values over which to plot histogram
+x <- seq(0., 100., 5)
+
+# histogram (frequency distribution) over specified range
+hist(BER.complete, x, prob=TRUE)
+
+# print estimated density curve for variable
+lines(density(BER.complete,bw="SJ")) # or try bw=“SJ”
+
+# print rug under histogram
+rug(BER.complete)
+
+
+## plot  histogram again
+
+# histogram (frequency distribution) over range
+hist(BER.complete, x, prob=TRUE) 
+
+# range of values
+x1<-seq(0,100,1)
+
+# generate probability density values for a normal distribution with given mean and sd
+d1 <- dnorm(x1,mean=46, sd=11,log=FALSE)
+
+# print density values
+lines(x1,d1)
+
+
+### Empirical Cumulative Distribution Function ###
+
+# plot ecdfs
+plot(ecdf(SHI.complete), do.points=FALSE, verticals=TRUE) 
+
+plot(ecdf(BER.complete), do.points=FALSE, verticals=TRUE) 
+
+
+### Quantile-quantile Plots ###
+
+# print quantile-quantile plot for variable with theoretical normal distribuion
+qqnorm(SHI.complete); qqline(SHI.complete)
+
+
+# print quantile-quantile plot for random numbers from a normal distribution with theoretical normal distribution
+
+# rnorm generates random values from a normal distribution with given mean and sd
+x <- rnorm(180, mean=46, sd=10)
+
+qqnorm(x); qqline(x)
+
+# print quantile-quantile plot for variable with theoretical normal distribuion
+qqnorm(BER.complete); qqline(BER.complete)
+
+
+# print quantile-quantile plot for random numbers from a normal distribution with theoretical normal distribution
+
+# rnorm generates random values from a normal distribution with given mean and sd
+x <- rnorm(180, mean=46, sd=10)
+
+qqnorm(x); qqline(x)
+
+
+# print quantile-quantile plot of two variables
+
+qqplot(SHI.complete, BER.complete, xlab = "Q-Q plot for SHI & BER") 
+
+
+## Statistical Tests
+
+x <- SHI.complete
+y <- BER.complete
+
+hist(x)
+hist(y)
+
+shapiro.test(x)
+shapiro.test(y)
+
+ad.test(x)
+ad.test(y)
+
+ks.test(x,y)
+
+wilcox.test(x,y)
+
+var.test(x,y)
+t.test(x,y)
+
+hist(x, col='lightsteelblue')
+hist(y, col='lightgreen', add=TRUE)
+
+
+### THE END ###
+
