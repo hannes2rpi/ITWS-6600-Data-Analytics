@@ -21,18 +21,26 @@ ggplot(dataset, aes(x = log10(PROPERTYSQFT), y = log10(PRICE))) +
 ## filter data
 dataset <- dataset[dataset$PRICE<195000000,]
 
+dataset <- dataset[dataset$PROPERTYSQFT!=2184.207862,]
+
 ## column names
 names(dataset)
 
-## fit linear model
-lmod0 <- lm(PRICE~PROPERTYSQFT, data = dataset)
+lmod1 <- lm(log10(PRICE)~log10(PROPERTYSQFT), data = dataset)
 
 ## print model output
-summary(lmod0)
+summary(lmod1)
 
-## scatter plot of 2 variables
-plot(PRICE~PROPERTYSQFT, data = dataset)
-abline(lmod0)
+## better scatter plot of 2 variables with best fit line
+
+ggplot(dataset, aes(x = log10(PROPERTYSQFT), y = log10(PRICE))) +
+  geom_point() +
+  stat_smooth(method = "lm", col="red")
+
+
+ggplot(lmod1, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0)
 
 
 ## BEDS
@@ -46,15 +54,21 @@ ggplot(dataset, aes(x = log10(BEDS), y = log10(PRICE))) +
 ## column names
 names(dataset)
 
-## fit linear model
-lmod0 <- lm(PRICE~BEDS, data = dataset)
+lmod2 <- lm(log10(PRICE)~log10(BEDS), data = dataset)
 
 ## print model output
-summary(lmod0)
+summary(lmod2)
 
-## scatter plot of 2 variables
-plot(PRICE~BEDS, data = dataset)
-abline(lmod0)
+## better scatter plot of 2 variables with best fit line
+
+ggplot(dataset, aes(x = log10(BEDS), y = log10(PRICE))) +
+  geom_point() +
+  stat_smooth(method = "lm", col="red")
+
+
+ggplot(lmod2, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0)
 
 
 ## BATH
@@ -65,16 +79,27 @@ ggplot(dataset, aes(x = BATH, y = PRICE)) +
 ggplot(dataset, aes(x = log10(BATH), y = log10(PRICE))) +
   geom_point()
 
+#FILTERS
+NAs <- is.na(dataset$BATH)
+dataset <- dataset[dataset$BATH!=NAs,]
+dataset <- dataset[dataset$BATH<33,]
+
 ## column names
 names(dataset)
 
-## fit linear model
-lmod0 <- lm(PRICE~BATH, data = dataset)
+lmod3 <- lm(log10(PRICE)~log10(BATH), data = dataset)
 
 ## print model output
-summary(lmod0)
+summary(lmod3)
 
-## scatter plot of 2 variables
-plot(PRICE~BATH, data = dataset)
-abline(lmod0)
+## better scatter plot of 2 variables with best fit line
+
+ggplot(dataset, aes(x = log10(BATH), y = log10(PRICE))) +
+  geom_point() +
+  stat_smooth(method = "lm", col="red")
+
+
+ggplot(lmod3, aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0)
 
