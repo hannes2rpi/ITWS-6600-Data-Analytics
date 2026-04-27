@@ -1,0 +1,98 @@
+KMEANS FIRST CLUSTER:
+
+WCSS: 334.3321
+
+Overall Statistics
+                                          
+               Accuracy : 0.0284          
+                 95% CI : (0.0105, 0.0609)
+    No Information Rate : 0.1754          
+    P-Value [Acc > NIR] : 1               
+                                          
+                  Kappa : -0.0061         
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: 1 Class: 2 Class: 3 Class: 4 Class: 5
+Sensitivity          0.000000 0.000000  0.00000 0.000000  0.00000
+Specificity          0.995074 0.994253  0.96891 0.856459  0.96517
+Pos Pred Value       0.000000 0.000000  0.00000 0.000000  0.00000
+Neg Pred Value       0.961905 0.823810  0.91220 0.988950  0.95098
+Prevalence           0.037915 0.175355  0.08531 0.009479  0.04739
+Detection Rate       0.000000 0.000000  0.00000 0.000000  0.00000
+Detection Prevalence 0.004739 0.004739  0.02844 0.142180  0.03318
+Balanced Accuracy    0.497537 0.497126  0.48446 0.428230  0.48259
+                     Class: 6 Class: 7 Class: 8 Class: 9 Class: 10
+Sensitivity           0.00000 0.000000 0.000000 0.000000   0.00000
+Specificity           0.93103 0.995074 0.904306 0.966507   0.92893
+Pos Pred Value        0.00000 0.000000 0.000000 0.000000   0.00000
+Neg Pred Value        0.95939 0.961905 0.989529 0.990196   0.92893
+Prevalence            0.03791 0.037915 0.009479 0.009479   0.06635
+Detection Rate        0.00000 0.000000 0.000000 0.000000   0.00000
+Detection Prevalence  0.06635 0.004739 0.094787 0.033175   0.06635
+Balanced Accuracy     0.46552 0.497537 0.452153 0.483254   0.46447
+                     Class: 11 Class: 12 Class: 13 Class: 14 Class: 15
+Sensitivity           0.000000  0.000000   0.00000  0.090909  0.111111
+Specificity           0.985714  0.995050   0.98077  0.975000  0.811881
+Pos Pred Value        0.000000  0.000000   0.00000  0.166667  0.025641
+Neg Pred Value        0.995192  0.957143   0.98551  0.951220  0.953488
+Prevalence            0.004739  0.042654   0.01422  0.052133  0.042654
+Detection Rate        0.000000  0.000000   0.00000  0.004739  0.004739
+Detection Prevalence  0.014218  0.004739   0.01896  0.028436  0.184834
+Balanced Accuracy     0.492857  0.497525   0.49038  0.532955  0.461496
+                     Class: 16 Class: 17 Class: 18 Class: 19 Class: 20
+Sensitivity           0.000000  0.142857   0.00000  0.111111  0.000000
+Specificity           0.952153  0.964467   0.98558  0.955446  0.985714
+Pos Pred Value        0.000000  0.222222   0.00000  0.100000  0.000000
+Neg Pred Value        0.990050  0.940594   0.98558  0.960199  0.995192
+Prevalence            0.009479  0.066351   0.01422  0.042654  0.004739
+Detection Rate        0.000000  0.009479   0.00000  0.004739  0.000000
+Detection Prevalence  0.047393  0.042654   0.01422  0.047393  0.014218
+Balanced Accuracy     0.476077  0.553662   0.49279  0.533278  0.492857
+                     Class: 21 Class: 22 Class: 23
+Sensitivity            0.00000   0.00000  1.000000
+Specificity            0.96875   0.98429  0.942857
+Pos Pred Value         0.00000   0.00000  0.076923
+Neg Pred Value         0.90732   0.90385  1.000000
+Prevalence             0.09005   0.09479  0.004739
+Detection Rate         0.00000   0.00000  0.004739
+Detection Prevalence   0.02844   0.01422  0.061611
+Balanced Accuracy      0.48438   0.49215  0.971429
+
+cm1$byClass[, "Precision"]
+  Class: 1   Class: 2   Class: 3   Class: 4   Class: 5   Class: 6 
+0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 
+  Class: 7   Class: 8   Class: 9  Class: 10  Class: 11  Class: 12 
+0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 
+ Class: 13  Class: 14  Class: 15  Class: 16  Class: 17  Class: 18 
+0.00000000 0.16666667 0.02564103 0.00000000 0.22222222 0.00000000 
+ Class: 19  Class: 20  Class: 21  Class: 22  Class: 23 
+0.10000000 0.00000000 0.00000000 0.00000000 0.07692308 
+> cm1$byClass[, "Recall"]
+  Class: 1   Class: 2   Class: 3   Class: 4   Class: 5   Class: 6 
+0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 
+  Class: 7   Class: 8   Class: 9  Class: 10  Class: 11  Class: 12 
+0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 
+ Class: 13  Class: 14  Class: 15  Class: 16  Class: 17  Class: 18 
+0.00000000 0.09090909 0.11111111 0.00000000 0.14285714 0.00000000 
+ Class: 19  Class: 20  Class: 21  Class: 22  Class: 23 
+0.11111111 0.00000000 0.00000000 0.00000000 1.00000000 
+> cm1$byClass[, "F1"]
+  Class: 1   Class: 2   Class: 3   Class: 4   Class: 5   Class: 6 
+       NaN        NaN        NaN        NaN        NaN        NaN 
+  Class: 7   Class: 8   Class: 9  Class: 10  Class: 11  Class: 12 
+       NaN        NaN        NaN        NaN        NaN        NaN 
+ Class: 13  Class: 14  Class: 15  Class: 16  Class: 17  Class: 18 
+       NaN 0.11764706 0.04166667        NaN 0.17391304        NaN 
+ Class: 19  Class: 20  Class: 21  Class: 22  Class: 23 
+0.10526316        NaN        NaN        NaN 0.14285714 
+
+
+KMEANS SECOND CLUSTER:
+
+WCSS: 2018.087
+
+
+
